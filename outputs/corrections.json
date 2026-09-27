@@ -1,0 +1,875 @@
+[
+    {
+    "model": "gpt-5.6-luna",
+    "id": "KZ-01",
+    "errors": [
+      "kaz_to_rus"
+    ],
+    "corrected": "Қасым-Жомарт Тоқаев бірқатар мемлекеттің елшісінен сенім грамоталарын қабылдады",
+    "changes": [
+      "Қ restored in 'Қасым'",
+      "қ restored in 'Тоқаев'",
+      "і restored in 'бірқатар'",
+      "ң restored in 'мемлекеттің'",
+      "і restored in 'елшісінен'",
+      "і restored in 'сенім'",
+      "қ restored in 'қабылдады'"
+    ],
+    "exact": true,
+    "char_diff": 0,
+    "cost": 0.0007926,
+    "input_tokens": 219,
+    "output_tokens": 624
+  },
+  {
+    "model": "gpt-5.6-luna",
+    "id": "KZ-02",
+    "errors": [
+      "drop_hyphen"
+    ],
+    "corrected": "Баспанада 50%-ға дейін үлесі бар азаматтар мемлекеттік тұрғын үйді жекешелендіре алады",
+    "changes": [
+      "'50% ға' тіркесіне дефис қосылды: '50%-ға'"
+    ],
+    "exact": true,
+    "char_diff": 0,
+    "cost": 0.00029299999999999997,
+    "input_tokens": 217,
+    "output_tokens": 208
+  },
+  {
+    "model": "gpt-5.6-luna",
+    "id": "KZ-03",
+    "errors": [
+      "latin_homoglyph"
+    ],
+    "corrected": "Алаяқтарға ақшаңызды аударып қойсаңыз не істеу керек",
+    "changes": [
+      "Латынша 'A' кириллше 'А' болып түзетілді",
+      "Латынша 'a' кириллше 'а' болып түзетілді",
+      "Латынша 't' кириллше 'т' болып түзетілді"
+    ],
+    "exact": true,
+    "char_diff": 0,
+    "cost": 0.00040859999999999996,
+    "input_tokens": 213,
+    "output_tokens": 305
+  },
+  {
+    "model": "gpt-5.6-luna",
+    "id": "KZ-04",
+    "errors": [
+      "kaz_to_rus_partial"
+    ],
+    "corrected": "Елде жалған дипломдар үшін қандай жаза қарастырылған?",
+    "changes": [
+      "ғ restored in «жалган»",
+      "ү restored in «ушін»",
+      "Question mark added at the end"
+    ],
+    "exact": false,
+    "char_diff": 1,
+    "cost": 0.0005,
+    "input_tokens": 208,
+    "output_tokens": 382
+  },
+  {
+    "model": "gpt-5.6-luna",
+    "id": "KZ-05",
+    "errors": [
+      "join_words"
+    ],
+    "corrected": "Алматыдағы ғимараттардың қаншасы жер сілкінісіне төзімді",
+    "changes": [
+      "'ғимараттардыңқаншасы' сөздерінің арасына бос орын қосылды"
+    ],
+    "exact": true,
+    "char_diff": 0,
+    "cost": 0.0005273999999999999,
+    "input_tokens": 213,
+    "output_tokens": 404
+  },
+  {
+    "model": "gpt-5.6-luna",
+    "id": "KZ-06",
+    "errors": [
+      "double_letter"
+    ],
+    "corrected": "Елде жеті айда 9,7 млн шаршы метр тұрғын үй пайдалануға берілді",
+    "changes": [
+      "Артық қайталанған «ж» әрпі алынып тасталды: «жжеті» → «жеті»"
+    ],
+    "exact": true,
+    "char_diff": 0,
+    "cost": 0.00020619999999999997,
+    "input_tokens": 215,
+    "output_tokens": 136
+  },
+  {
+    "model": "gpt-5.6-luna",
+    "id": "KZ-07",
+    "errors": [
+      "kaz_to_rus",
+      "join_words"
+    ],
+    "corrected": "Алаяқтардан қорғану жолдары: елорда прокуратурасы ескерту жасады",
+    "changes": [
+      "к replaced with қ in «Алаяктардан»",
+      "к replaced with қ in «коргану»",
+      "г replaced with ғ in «коргану»",
+      "Space inserted between «қорғану» and «жолдары»"
+    ],
+    "exact": true,
+    "char_diff": 0,
+    "cost": 0.0005011999999999999,
+    "input_tokens": 214,
+    "output_tokens": 382
+  },
+  {
+    "model": "gpt-5.6-luna",
+    "id": "KZ-08",
+    "errors": [
+      "latin_homoglyph",
+      "double_letter"
+    ],
+    "corrected": "Дональд Трамп Ким Чен Ынмен осы күзде қайта кездескісі келеді",
+    "changes": [
+      "Latin homoglyph 'o' replaced with Cyrillic 'о' in 'Дoнaлльд'",
+      "Latin homoglyph 'a' replaced with Cyrillic 'а' in 'Дoнaлльд'",
+      "Removed the doubled 'л' in 'Дoнaлльд'"
+    ],
+    "exact": true,
+    "char_diff": 0,
+    "cost": 0.000503,
+    "input_tokens": 217,
+    "output_tokens": 383
+  },
+  {
+    "model": "gpt-5.6-terra",
+    "id": "KZ-01",
+    "errors": [
+      "kaz_to_rus"
+    ],
+    "corrected": "Қасым-Жомарт Тоқаев бірқатар мемлекеттің елшісінен сенім грамоталарын қабылдады",
+    "changes": [
+      "Қ restored in 'Қасым'",
+      "қ and і restored in 'бірқатар'",
+      "қ restored in 'Тоқаев'",
+      "ң restored in 'мемлекеттің'",
+      "і restored in 'елшісінен'",
+      "і restored in 'сенім'",
+      "қ restored in 'қабылдады'"
+    ],
+    "exact": true,
+    "char_diff": 0,
+    "cost": 0.005658,
+    "input_tokens": 219,
+    "output_tokens": 435
+  },
+  {
+    "model": "gpt-5.6-terra",
+    "id": "KZ-02",
+    "errors": [
+      "drop_hyphen"
+    ],
+    "corrected": "Баспанада 50%-ға дейін үлесі бар азаматтар мемлекеттік тұрғын үйді жекешелендіре алады",
+    "changes": [
+      "'50% ға' тіркесіндегі дефис қалпына келтірілді: '50%-ға'"
+    ],
+    "exact": true,
+    "char_diff": 0,
+    "cost": 0.003062,
+    "input_tokens": 217,
+    "output_tokens": 219
+  },
+  {
+    "model": "gpt-5.6-terra",
+    "id": "KZ-03",
+    "errors": [
+      "latin_homoglyph"
+    ],
+    "corrected": "Алаяқтарға ақшаңызды аударып қойсаңыз не істеу керек",
+    "changes": [
+      "Latin homoglyphs replaced with Cyrillic letters in 'Алаяқтарға'"
+    ],
+    "exact": true,
+    "char_diff": 0,
+    "cost": 0.0022860000000000003,
+    "input_tokens": 213,
+    "output_tokens": 155
+  },
+  {
+    "model": "gpt-5.6-terra",
+    "id": "KZ-04",
+    "errors": [
+      "kaz_to_rus_partial"
+    ],
+    "corrected": "Елде жалған дипломдар үшін қандай жаза қарастырылған",
+    "changes": [
+      "ғ restored in 'жалған'",
+      "ү and і restored in 'үшін'"
+    ],
+    "exact": true,
+    "char_diff": 0,
+    "cost": 0.0009319999999999999,
+    "input_tokens": 208,
+    "output_tokens": 43
+  },
+  {
+    "model": "gpt-5.6-terra",
+    "id": "KZ-05",
+    "errors": [
+      "join_words"
+    ],
+    "corrected": "Алматыдағы ғимараттардың қаншасы жер сілкінісіне төзімді?",
+    "changes": [
+      "'ғимараттардыңқаншасы' сөздері 'ғимараттардың қаншасы' болып бөлінді",
+      "сұрақ белгісі қосылды"
+    ],
+    "exact": false,
+    "char_diff": 1,
+    "cost": 0.001962,
+    "input_tokens": 213,
+    "output_tokens": 128
+  },
+  {
+    "model": "gpt-5.6-terra",
+    "id": "KZ-06",
+    "errors": [
+      "double_letter"
+    ],
+    "corrected": "Елде жеті айда 9,7 млн шаршы метр тұрғын үй пайдалануға берілді",
+    "changes": [
+      "'жжеті' сөзіндегі артық 'ж' әрпі алынып тасталды"
+    ],
+    "exact": true,
+    "char_diff": 0,
+    "cost": 0.0017980000000000001,
+    "input_tokens": 215,
+    "output_tokens": 114
+  },
+  {
+    "model": "gpt-5.6-terra",
+    "id": "KZ-07",
+    "errors": [
+      "kaz_to_rus",
+      "join_words"
+    ],
+    "corrected": "Алаяқтардан қорғану жолдары: елорда прокуратурасы ескерту жасады",
+    "changes": [
+      "'Алаяктардан' сөзіндегі к әрпі қ әрпіне түзетілді",
+      "'коргану' сөзі 'қорғану' болып түзетілді",
+      "'корганужолдары' сөздері 'қорғану жолдары' болып бөлінді"
+    ],
+    "exact": true,
+    "char_diff": 0,
+    "cost": 0.0046040000000000005,
+    "input_tokens": 214,
+    "output_tokens": 348
+  },
+  {
+    "model": "gpt-5.6-terra",
+    "id": "KZ-08",
+    "errors": [
+      "latin_homoglyph",
+      "double_letter"
+    ],
+    "corrected": "Дональд Трамп Ким Чен Ынмен осы күзде қайта кездескісі келеді",
+    "changes": [
+      "Latin 'o' replaced with Cyrillic 'о' in 'Дональд'",
+      "Latin 'a' replaced with Cyrillic 'а' in 'Дональд'",
+      "extra 'л' removed in 'Дональд'",
+      "Latin 'T' replaced with Cyrillic 'Т' in 'Трамп'"
+    ],
+    "exact": true,
+    "char_diff": 0,
+    "cost": 0.003434,
+    "input_tokens": 217,
+    "output_tokens": 250
+  },
+  {
+    "model": "gpt-5.6-sol",
+    "id": "KZ-01",
+    "errors": [
+      "kaz_to_rus"
+    ],
+    "corrected": "Қасым-Жомарт Тоқаев бірқатар мемлекеттің елшісінен сенім грамоталарын қабылдады",
+    "changes": [
+      "қ restored in 'Қасым'",
+      "қ restored in 'Тоқаев'",
+      "і and қ restored in 'бірқатар'",
+      "і and ң restored in 'мемлекеттің'",
+      "і restored in 'елшісінен'",
+      "і restored in 'сенім'",
+      "қ restored in 'қабылдады'"
+    ],
+    "exact": true,
+    "char_diff": 0,
+    "cost": 0.008595,
+    "input_tokens": 219,
+    "output_tokens": 250
+  },
+  {
+    "model": "gpt-5.6-sol",
+    "id": "KZ-02",
+    "errors": [
+      "drop_hyphen"
+    ],
+    "corrected": "Баспанада 50%-ға дейін үлесі бар азаматтар мемлекеттік тұрғын үйді жекешелендіре алады",
+    "changes": [
+      "Hyphen restored and space removed in '50% ға' → '50%-ға'"
+    ],
+    "exact": true,
+    "char_diff": 0,
+    "cost": 0.005255,
+    "input_tokens": 217,
+    "output_tokens": 139
+  },
+  {
+    "model": "gpt-5.6-sol",
+    "id": "KZ-03",
+    "errors": [
+      "latin_homoglyph"
+    ],
+    "corrected": "Алаяқтарға ақшаңызды аударып қойсаңыз не істеу керек",
+    "changes": [
+      "Latin A, a, and t replaced with Cyrillic А, а, and т in 'Алаяқтарға'"
+    ],
+    "exact": true,
+    "char_diff": 0,
+    "cost": 0.015465,
+    "input_tokens": 213,
+    "output_tokens": 480
+  },
+  {
+    "model": "gpt-5.6-sol",
+    "id": "KZ-04",
+    "errors": [
+      "kaz_to_rus_partial"
+    ],
+    "corrected": "Елде жалған дипломдар үшін қандай жаза қарастырылған",
+    "changes": [
+      "ғ restored in 'жалған'",
+      "ү restored in 'үшін'"
+    ],
+    "exact": true,
+    "char_diff": 0,
+    "cost": 0.00485,
+    "input_tokens": 208,
+    "output_tokens": 127
+  },
+  {
+    "model": "gpt-5.6-sol",
+    "id": "KZ-05",
+    "errors": [
+      "join_words"
+    ],
+    "corrected": "Алматыдағы ғимараттардың қаншасы жер сілкінісіне төзімді",
+    "changes": [
+      "Space restored between 'ғимараттардың' and 'қаншасы'"
+    ],
+    "exact": true,
+    "char_diff": 0,
+    "cost": 0.0042450000000000005,
+    "input_tokens": 213,
+    "output_tokens": 106
+  },
+  {
+    "model": "gpt-5.6-sol",
+    "id": "KZ-06",
+    "errors": [
+      "double_letter"
+    ],
+    "corrected": "Елде жеті айда 9,7 млн шаршы метр тұрғын үй пайдалануға берілді",
+    "changes": [
+      "Removed the doubled ж in 'жжеті'"
+    ],
+    "exact": true,
+    "char_diff": 0,
+    "cost": 0.002365,
+    "input_tokens": 215,
+    "output_tokens": 43
+  },
+  {
+    "model": "gpt-5.6-sol",
+    "id": "KZ-07",
+    "errors": [
+      "kaz_to_rus",
+      "join_words"
+    ],
+    "corrected": "Алаяқтардан қорғану жолдары: елорда прокуратурасы ескерту жасады",
+    "changes": [
+      "қ restored in 'Алаяқтардан'",
+      "қ and ғ restored in 'қорғану'",
+      "space inserted between 'қорғану' and 'жолдары'"
+    ],
+    "exact": true,
+    "char_diff": 0,
+    "cost": 0.00614,
+    "input_tokens": 214,
+    "output_tokens": 169
+  },
+  {
+    "model": "gpt-5.6-sol",
+    "id": "KZ-08",
+    "errors": [
+      "latin_homoglyph",
+      "double_letter"
+    ],
+    "corrected": "Дональд Трамп Ким Чен Ынмен осы күзде қайта кездескісі келеді",
+    "changes": [
+      "Latin 'o' replaced with Cyrillic 'о' in 'Дональд'",
+      "Latin 'a' replaced with Cyrillic 'а' in 'Дональд'",
+      "extra 'л' removed from 'Доналльд'",
+      "Latin 'T' replaced with Cyrillic 'Т' in 'Трамп'"
+    ],
+    "exact": true,
+    "char_diff": 0,
+    "cost": 0.008255,
+    "input_tokens": 217,
+    "output_tokens": 239
+  },
+  {
+    "model": "nemotron-3-ultra-550b-a55b:free",
+    "id": "KZ-01",
+    "errors": [
+      "kaz_to_rus"
+    ],
+    "corrected": "Қасым-Жомарт Тоқаев бірқатар мемлекеттің елшісінен сенім грамоталарын қабылдады",
+    "changes": [
+      "Касым → Қасым: Russian «К» replaced with Kazakh «Қ»",
+      "Токаев → Тоқаев: Russian «к» replaced with Kazakh «қ»",
+      "биркатар → бірқатар: restored Kazakh «і» in «бір» and Russian «к»→«қ» in «қатар»",
+      "мемлекеттин → мемлекеттің: Russian «и»→«і» and «н»→«ң»",
+      "елшисинен → елшісінен: Russian «и»→«і» (two occurrences)",
+      "сеним → сенім: Russian «и»→«і»",
+      "грамоталарын → грамоталарын: inserted missing «а» after «т»",
+      "кабылдады → қабылдады: Russian «к»→«қ»"
+    ],
+    "exact": true,
+    "char_diff": 0,
+    "cost": 0.0,
+    "input_tokens": 238,
+    "output_tokens": 3114
+  },
+  {
+    "model": "nemotron-3-ultra-550b-a55b:free",
+    "id": "KZ-02",
+    "errors": [
+      "drop_hyphen"
+    ],
+    "corrected": "Бастамада 50% ға дейін үлесі бар азаматтар мемлекеттік тұрғын үйді жекешелендіре алады",
+    "changes": [
+      "п corrected to т in 'Баспанада'",
+      "н corrected to м in 'Баспанада'"
+    ],
+    "exact": false,
+    "char_diff": 3,
+    "cost": 0.0,
+    "input_tokens": 244,
+    "output_tokens": 6895
+  },
+  {
+    "model": "nemotron-3-ultra-550b-a55b:free",
+    "id": "KZ-03",
+    "errors": [
+      "latin_homoglyph"
+    ],
+    "corrected": "Алдаушыларға ақшаңызды аударып қойсаңыз, не істеу керек",
+    "changes": [
+      "Latin 'A' replaced with Cyrillic 'А'",
+      "Latin 'a' replaced with Cyrillic 'д' (restoring 'алд...')",
+      "Cyrillic 'я' replaced with 'у'",
+      "Cyrillic 'қ' replaced with 'ш'",
+      "Latin 't' replaced with Cyrillic 'ы'",
+      "Inserted missing 'л' and 'а' to form 'шылар'",
+      "Added comma after 'қойсаңыз'"
+    ],
+    "exact": false,
+    "char_diff": 51,
+    "cost": 0.0,
+    "input_tokens": 236,
+    "output_tokens": 26426
+  },
+  {
+    "model": "nemotron-3-ultra-550b-a55b:free",
+    "id": "KZ-04",
+    "errors": [
+      "kaz_to_rus_partial"
+    ],
+    "corrected": "Елде жальған дипломдар үшін қандай жаза қадастырылған",
+    "changes": [
+      "ғ restored to г in 'жалған'",
+      "ү restored to у in 'үшін'",
+      "'р' corrected to 'д' and final 'ғ' restored in 'қадастырылған'"
+    ],
+    "exact": false,
+    "char_diff": 45,
+    "cost": 0.0,
+    "input_tokens": 228,
+    "output_tokens": 3137
+  },
+  {
+    "model": "nemotron-3-ultra-550b-a55b:free",
+    "id": "KZ-05",
+    "errors": [
+      "join_words"
+    ],
+    "corrected": "Алматыдағы ғимараттардың қаншасы жер сілкінісіне төзімді",
+    "changes": [
+      "Added space between 'ғимараттардың' and 'қаншасы'"
+    ],
+    "exact": true,
+    "char_diff": 0,
+    "cost": 0.0,
+    "input_tokens": 232,
+    "output_tokens": 582
+  },
+  {
+    "model": "nemotron-3-ultra-550b-a55b:free",
+    "id": "KZ-06",
+    "errors": [
+      "double_letter"
+    ],
+    "corrected": "Елде жеті айда 9,7 млн квадраттық метр тұрғын үй пайдалануға берілді",
+    "changes": [
+      "Removed duplicate 'ж' in 'жжеті' to make 'жеті'",
+      "Replaced corrupted 'шаршы' with correct term 'квадраттық'"
+    ],
+    "exact": false,
+    "char_diff": 43,
+    "cost": 0.0,
+    "input_tokens": 238,
+    "output_tokens": 5494
+  },
+  {
+    "model": "nemotron-3-ultra-550b-a55b:free",
+    "id": "KZ-07",
+    "errors": [
+      "kaz_to_rus",
+      "join_words"
+    ],
+    "corrected": "Алалықтардан қорғаныс жолдары: Ел Орда прокуратурасы ескерту жасады",
+    "changes": [
+      "Restored Kazakh letter қ in 'Алалықтардан' (was 'Алаяктардан')",
+      "Reconstructed 'қорғаныс жолдары' from 'корганужолдары': restored қ, ғ, fixed ы/у and missing с, added space between words",
+      "Split 'елорда' into 'Ел Орда' and capitalized proper noun"
+    ],
+    "exact": false,
+    "char_diff": 63,
+    "cost": 0.0,
+    "input_tokens": 233,
+    "output_tokens": 2420
+  },
+  {
+    "model": "nemotron-3-ultra-550b-a55b:free",
+    "id": "KZ-08",
+    "errors": [
+      "latin_homoglyph",
+      "double_letter"
+    ],
+    "corrected": "Дональд Трамп мен Ким Чен Ын осы күзде қайта кездесуі келеді",
+    "changes": [
+      "Latin 'o' and 'a' restored to Cyrillic 'о' and 'а' in 'Дональд'",
+      "Double 'л' reduced to single 'л' in 'Дональд'",
+      "Latin 'T' restored to Cyrillic 'Т' in 'Трамп'",
+      "Inserted missing conjunction 'мен' after 'Трамп'",
+      "Split joined words 'Ынмен' into 'Ын мен'",
+      "Corrupted 'кездескісі' corrected to 'кездесуі'"
+    ],
+    "exact": false,
+    "char_diff": 45,
+    "cost": 0.0,
+    "input_tokens": 240,
+    "output_tokens": 11145
+  },
+  {
+    "model": "laguna-s-2.1:free",
+    "id": "KZ-01",
+    "errors": [
+      "kaz_to_rus"
+    ],
+    "corrected": "Қасым-Жомарт Тоқаев бірнеше мемлекеттің елшісінен сәнiм грамоталарын қабылдады",
+    "changes": [
+      "Токаев → Тоқаев (қ restored instead of к)",
+      "биркатар → бірнеше (Kazakh for 'several')",
+      "мемлекеттин → мемлекеттің (і restored instead of и)",
+      "елшисинен → елшісінен (і restored instead of и)",
+      "сеним → сәнiм (Kazakh for 'signature')",
+      "кабылдады → қабылдады (қ restored instead of к)"
+    ],
+    "exact": false,
+    "char_diff": 55,
+    "cost": 0.0,
+    "input_tokens": 293,
+    "output_tokens": 1291
+  },
+  {
+    "model": "laguna-s-2.1:free",
+    "id": "KZ-02",
+    "errors": [
+      "drop_hyphen"
+    ],
+    "corrected": "Баспанада 50% ға дейін үлесі бар азаматтар мемлекеттік тұрғын үйді жекешелендіре алады",
+    "changes": [
+      "No valid changes needed - the text appears to be already correctly written in Kazakh."
+    ],
+    "exact": false,
+    "char_diff": 1,
+    "cost": 0.0,
+    "input_tokens": 312,
+    "output_tokens": 94
+  },
+  {
+    "model": "laguna-s-2.1:free",
+    "id": "KZ-03",
+    "errors": [
+      "latin_homoglyph"
+    ],
+    "corrected": "Алаяқтарға ақшаңызды аударып қойсаңыз не істеу керек",
+    "changes": [
+      "Алайық → Алаяқ (ө replacing ы to restore correct Kazakh form)"
+    ],
+    "exact": true,
+    "char_diff": 0,
+    "cost": 0.0,
+    "input_tokens": 292,
+    "output_tokens": 81
+  },
+  {
+    "model": "laguna-s-2.1:free",
+    "id": "KZ-04",
+    "errors": [
+      "kaz_to_rus_partial"
+    ],
+    "corrected": "Елде жалған дипломдар ушын қандай жаза қараластырылған",
+    "changes": [
+      "ә replaced with а in 'жалган'",
+      "і replaced with ы in 'ушін' -> 'ушын'",
+      "т removed from 'қарастырылған' -> 'қараластырылған'"
+    ],
+    "exact": false,
+    "char_diff": 12,
+    "cost": 0.0,
+    "input_tokens": 282,
+    "output_tokens": 112
+  },
+  {
+    "model": "laguna-s-2.1:free",
+    "id": "KZ-05",
+    "errors": [
+      "join_words"
+    ],
+    "corrected": "Алматыдағы ғимараттардың санына жер сілкінісіне төзімді",
+    "changes": [
+      "қаншасы → санына (incorrect word replaced with correct form)",
+      "Added space between 'ғимараттардың' and 'санына' (joined words fixed)"
+    ],
+    "exact": false,
+    "char_diff": 29,
+    "cost": 0.0,
+    "input_tokens": 292,
+    "output_tokens": 1964
+  },
+  {
+    "model": "laguna-s-2.1:free",
+    "id": "KZ-06",
+    "errors": [
+      "double_letter"
+    ],
+    "corrected": "Елде жылдың 9,7 млн шаршы метр тұрғын үй пайдалануға берілді",
+    "changes": [
+      "жжеті айда → жылдың"
+    ],
+    "exact": false,
+    "char_diff": 52,
+    "cost": 0.0,
+    "input_tokens": 296,
+    "output_tokens": 3322
+  },
+  {
+    "model": "laguna-s-2.1:free",
+    "id": "KZ-07",
+    "errors": [
+      "kaz_to_rus",
+      "join_words"
+    ],
+    "corrected": "Алалқа таратқандар курметіне: елорда прокуратурасы ескерту жасады",
+    "changes": [
+      "ж removed between таратқан and жолдар to restore таратқандар курметіне",
+      "ә replaced with а in таратқандар → таратқандар",
+      "ң restored to н in курмет → курметіне"
+    ],
+    "exact": false,
+    "char_diff": 59,
+    "cost": 0.0,
+    "input_tokens": 282,
+    "output_tokens": 123
+  },
+  {
+    "model": "laguna-s-2.1:free",
+    "id": "KZ-08",
+    "errors": [
+      "latin_homoglyph",
+      "double_letter"
+    ],
+    "corrected": "Дональд Трамп Ким Чен Ынмен осы күзде қайта кездескісі келеді",
+    "changes": [
+      "ә restored from а in 'Дoнaлльд' → 'Дональд'",
+      "ә restored from а in 'Tрамп' → 'Трамп'",
+      "ә restored from а in 'Ким' → 'Ким'",
+      "ә restored from а in 'Чен' → 'Чен'",
+      "ә restored from а in 'Ынмен' → 'Ынмен'",
+      "ә restored from а in 'күзде' → 'күзде'",
+      "ә restored from а in 'қайта' → 'қайта'",
+      "ә restored from а in 'кездескісі' → 'кездескісі'",
+      "ә restored from а in 'келеді' → 'келеді'"
+    ],
+    "exact": true,
+    "char_diff": 0,
+    "cost": 0.0,
+    "input_tokens": 287,
+    "output_tokens": 228
+  },
+  {
+    "model": "nex-n2.5-mini:free",
+    "id": "KZ-01",
+    "errors": [
+      "kaz_to_rus"
+    ],
+    "corrected": "Касым-Жомарт Токаев бірқатар мемлекеттің елшілерінен сенім грамоталарын қабылдады",
+    "changes": [
+      "биркатар -> бірқатар: и restored to і and к restored to қ",
+      "мемлекеттин -> мемлекеттің: и restored to і and н restored to ң",
+      "елшисинен -> елшілерінен: plural form restored and и restored to і",
+      "сеним -> сенім: и restored to і",
+      "кабылдады -> қабылдады: к restored to қ"
+    ],
+    "exact": false,
+    "char_diff": 35,
+    "cost": 0.0,
+    "input_tokens": 237,
+    "output_tokens": 3218
+  },
+  {
+    "model": "nex-n2.5-mini:free",
+    "id": "KZ-02",
+    "errors": [
+      "drop_hyphen"
+    ],
+    "corrected": "Баспанада 50%-ға дейін үлесі бар азаматтар мемлекеттік тұрғын үйді жекешелендіре алады",
+    "changes": [
+      "Hyphen restored between % and ға in '50% ға'"
+    ],
+    "exact": true,
+    "char_diff": 0,
+    "cost": 0.0,
+    "input_tokens": 244,
+    "output_tokens": 3118
+  },
+  {
+    "model": "nex-n2.5-mini:free",
+    "id": "KZ-03",
+    "errors": [
+      "latin_homoglyph"
+    ],
+    "corrected": "Алаяқтарға ақшаңызды аударып қойсаңыз не істеу керек",
+    "changes": [
+      "Latin 'A' restored to Kazakh Cyrillic 'А' at the start",
+      "Latin 'a' restored to Kazakh Cyrillic 'а' in 'Aлaяқtарға'",
+      "Latin 't' restored to Kazakh Cyrillic 'т' in 'Aлaяқtарға'"
+    ],
+    "exact": true,
+    "char_diff": 0,
+    "cost": 0.0,
+    "input_tokens": 230,
+    "output_tokens": 500
+  },
+  {
+    "model": "nex-n2.5-mini:free",
+    "id": "KZ-04",
+    "errors": [
+      "kaz_to_rus_partial"
+    ],
+    "corrected": "Елде жалған дипломдар үшін қандай жаза қарастырылған",
+    "changes": [
+      "ә restored in 'жалган' → 'жалған'",
+      "ү restored in 'ушін' → 'үшін'"
+    ],
+    "exact": true,
+    "char_diff": 0,
+    "cost": 0.0,
+    "input_tokens": 224,
+    "output_tokens": 181
+  },
+  {
+    "model": "nex-n2.5-mini:free",
+    "id": "KZ-05",
+    "errors": [
+      "join_words"
+    ],
+    "corrected": "Алматыдағы ғимараттардың қаншасы жер сілкінісіне төзімді",
+    "changes": [
+      "Inserted a space between 'ғимараттардың' and 'қаншасы'"
+    ],
+    "exact": true,
+    "char_diff": 0,
+    "cost": 0.0,
+    "input_tokens": 230,
+    "output_tokens": 199
+  },
+  {
+    "model": "nex-n2.5-mini:free",
+    "id": "KZ-06",
+    "errors": [
+      "double_letter"
+    ],
+    "corrected": "Елде жеті айда 9,7 млн шаршы метр тұрғын үй пайдалануға берілді",
+    "changes": [
+      "one ж removed in 'жжеті' to correct it to 'жеті'"
+    ],
+    "exact": true,
+    "char_diff": 0,
+    "cost": 0.0,
+    "input_tokens": 235,
+    "output_tokens": 294
+  },
+  {
+    "model": "nex-n2.5-mini:free",
+    "id": "KZ-07",
+    "errors": [
+      "kaz_to_rus",
+      "join_words"
+    ],
+    "corrected": "Алаяқтардан қорғану жолдары: елорда прокуратурасы ескерту жасады",
+    "changes": [
+      "к restored to қ in 'Алаяктардан'",
+      "к restored to қ in 'корганужолдары'",
+      "г restored to ғ in 'корганужолдары'",
+      "space inserted between 'қорғану' and 'жолдары'"
+    ],
+    "exact": true,
+    "char_diff": 0,
+    "cost": 0.0,
+    "input_tokens": 231,
+    "output_tokens": 923
+  },
+  {
+    "model": "nex-n2.5-mini:free",
+    "id": "KZ-08",
+    "errors": [
+      "latin_homoglyph",
+      "double_letter"
+    ],
+    "corrected": "Дональд Трамп Ким Чен Ынмен осы күзде қайта кездескісі келеді",
+    "changes": [
+      "replaced Latin homoglyph 'o' with Cyrillic 'о' in 'Дoнaлльд','replaced Latin homoglyph 'a' with Cyrillic 'а' in 'Дoнaлльд','replaced Latin homoglyph 'T' with Cyrillic 'Т' in 'Tрамп'"
+    ],
+    "exact": true,
+    "char_diff": 0,
+    "cost": 0.0,
+    "input_tokens": 235,
+    "output_tokens": 371
+  }
+
+]

@@ -8,9 +8,9 @@ Fill in every `TODO`. Keep the function signatures.
 """
 
 import json
-import os
 import sys
 from pathlib import Path
+import re
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
@@ -21,12 +21,12 @@ DATA = Path(__file__).resolve().parent.parent / "data" / "kazakh_errors.json"
 
 # Every model you must run. Keep the order - it is the order of your table.
 MODELS = [
-    ("openrouter", "google/gemma-4-26b-a4b-it:free"),
-    ("openrouter", "qwen/qwen3.8-27b"),
-    ("openrouter", "deepseek/deepseek-v4-flash-0731"),
     ("openai", "gpt-5.6-luna"),
     ("openai", "gpt-5.6-terra"),
     ("openai", "gpt-5.6-sol"),
+    ("openrouter", "nemotron-3-ultra-550b-a55b:free"),
+    ("openrouter", "nex-n2.5-mini:free"),
+    ("openrouter", "laguna-s-2.1:free"),
 ]
 
 
@@ -36,21 +36,23 @@ def load_sentences() -> list[dict]:
 
 
 def build_prompt(corrupted: str) -> str:
-    """Ask for a corrected sentence AND a list of the changes made.
-
-    Requirements:
-      - state that the text is Kazakh and may contain wrong letters, joined
-        words, or letters from the wrong alphabet;
-      - demand exactly this JSON and nothing else:
-            {"corrected": "...", "changes": ["...", "..."]}
-      - do not include the correct answer in the prompt. You are testing the
-        model, not your own typing.
-
-    Asking for a fixed shape instead of prose is how you make six models
-    comparable. Week 3 turns this into a topic.
-    """
-    # TODO
-    raise NotImplementedError
+    """Ask for a corrected sentence AND a list of the changes made."""
+    return (
+        "The following text is Kazakh, taken from a real published news "
+        "sentence, but it has been corrupted. Possible damage includes: "
+        "Kazakh-specific letters (ә, қ, ң, ғ, ү, ұ, і, ө, һ) replaced with "
+        "similar-looking Russian/Cyrillic letters; Cyrillic letters replaced "
+        "with similar-looking Latin letters (homoglyphs); a hyphen removed; "
+        "two words joined together with no space; or a letter doubled.\n\n"
+        "Fix the text so it reads as correct, natural Kazakh.\n\n"
+        f"Corrupted text:\n{corrupted}\n\n"
+        "Respond with exactly this JSON object and nothing else - no "
+        "markdown fences, no explanation before or after it:\n"
+        '{"corrected": "...", "changes": ["...", "..."]}\n\n'
+        '"corrected" is the fixed Kazakh sentence. "changes" is a short '
+        "list of the specific edits you made (e.g. \"ә restored to а in "
+        "'мемлекеттін'\")."
+    )
 
 
 def parse_response(text: str) -> dict:
@@ -60,8 +62,38 @@ def parse_response(text: str) -> dict:
     like. Be forgiving: find the JSON, parse it, and raise ValueError with the
     offending text if you truly cannot.
     """
-    # TODO
-    raise NotImplementedError
+    # 1. Try the whole string as-is.
+    try:
+        data = json.loads(text)
+        if isinstance(data, dict) and "corrected" in data:
+            return data
+    except (json.JSONDecodeError, TypeError):
+        pass
+ 
+    # 2. Look for a ```json ... ``` or ``` ... ``` fenced block.
+    fence_match = re.search(r"```(?:json)?\s*(\{.*?\})\s*```", text, re.DOTALL)
+    if fence_match:
+        try:
+            data = json.loads(fence_match.group(1))
+            if isinstance(data, dict) and "corrected" in data:
+                return data
+        except json.JSONDecodeError:
+            pass
+ 
+    # 3. Scan for balanced {...} objects anywhere in the text and try each
+    #    one (a model may chat before/after the JSON).
+    decoder = json.JSONDecoder()
+    for i, ch in enumerate(text):
+        if ch != "{":
+            continue
+        try:
+            data, _ = decoder.raw_decode(text, i)
+        except json.JSONDecodeError:
+            continue
+        if isinstance(data, dict) and "corrected" in data:
+            return data
+ 
+    raise ValueError(f"No parsable JSON with a 'corrected' field found in: {text!r}")
 
 
 def correct_with(model: str, corrupted: str, via: str) -> dict:
@@ -75,23 +107,38 @@ def correct_with(model: str, corrupted: str, via: str) -> dict:
     `ask_once` from sublab_easy - there is no conversation here, just one
     prompt and one reply, eight times per model.
     """
-    # TODO
-    raise NotImplementedError
+    prompt = build_prompt(corrupted)
+    response = ask_once(prompt, model=model, via=via)
+ 
+    parsed = parse_response(response["text"])
+ 
+    return {
+        "corrected": parsed.get("corrected", ""),
+        "changes": parsed.get("changes", []),
+        "input_tokens": response["input_tokens"],
+        "output_tokens": response["output_tokens"],
+        "model": model,
+    }
 
 
 def score_correction(returned: str, expected: str) -> dict:
     """Compare a model's output against the published original.
-
-    Returns {"exact": bool, "char_diff": int} where char_diff is the number of
-    differing characters (a simple positional comparison is enough; count the
-    length difference too).
-
-    READ THIS: `exact` is a signal, not a grade. Good Kazakh that differs from
-    the original still counts as a correction. Your written analysis is where
-    you make that call.
+ 
+    `exact` is a signal, not a grade: good Kazakh that differs from the
+    original (different word order, synonym, alternate valid suffix) still
+    counts as a real correction - say so in the written analysis, don't just
+    report the number below as "accuracy".
     """
-    # TODO
-    raise NotImplementedError
+    exact = returned == expected
+ 
+    min_len = min(len(returned), len(expected))
+    positional_diff = sum(
+        1 for a, b in zip(returned[:min_len], expected[:min_len]) if a != b
+    )
+    length_diff = abs(len(returned) - len(expected))
+    char_diff = positional_diff + length_diff
+ 
+    return {"exact": exact, "char_diff": char_diff}
 
 
 def run_all() -> list[dict]:
@@ -99,12 +146,15 @@ def run_all() -> list[dict]:
     rows = []
     for via, model in MODELS:
         for s in load_sentences():
+            print(f"  {via}/{model} -> {s['id']} ...", end=" ", flush=True)
             try:
                 r = correct_with(model, s["corrupted"], via)
             except Exception as exc:            # a model failing IS a result
+                print("FAILED:", repr(exc))
                 rows.append({"model": model, "id": s["id"],
                              "errors": s["errors"], "failed": repr(exc)})
                 continue
+            print("ok")
             rate_in, rate_out = RATES_PER_MTOK[model]
             rows.append({
                 "model": model,

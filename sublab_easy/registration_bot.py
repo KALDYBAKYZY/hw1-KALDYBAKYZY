@@ -38,9 +38,9 @@ RATES_PER_MTOK = {
     "gpt-5.6-terra": (2.00, 12.00),
     "gpt-5.6-sol": (5.00, 30.00),
     # Reached through OpenRouter
-    "google/gemma-4-26b-a4b-it:free": (0.00, 0.00),
-    "qwen/qwen3.8-27b": (0.45, 3.20),
-    "deepseek/deepseek-v4-flash-0731": (0.14, 0.28),
+    "nemotron-3-ultra-550b-a55b:free": (0.00, 0.00),
+    "nex-n2.5-mini:free": (0.00, 0.00),
+    "laguna-s-2.1:free": (0.00, 0.00),
 }
 
 
@@ -70,8 +70,7 @@ def openrouter_client() -> OpenAI:
     key = os.environ.get("OPENROUTER_API_KEY")
     if not key:
         raise RuntimeError("OPENROUTER_API_KEY is not set. Copy .env.example to .env.")
-    # TODO: return an OpenAI client whose base_url is OPENROUTER_BASE_URL
-    raise NotImplementedError
+    return OpenAI(api_key=key, base_url=OPENROUTER_BASE_URL)
 
 
 def client_for(via: str) -> OpenAI:
@@ -88,27 +87,48 @@ def client_for(via: str) -> OpenAI:
 # --------------------------------------------------------------------------
 
 def build_system_prompt(catalogue: dict) -> str:
-    """Write the system message that turns a language model into a registrar.
+    """Write the system message that turns a language model into a registrar."""
+    rules = catalogue["rules"]
+    student = catalogue["student"]
 
-    This is the whole assignment for this function: the model knows nothing
-    about Narxoz, so everything true has to arrive in this string.
+    lines = [
+        "You are the course-registration assistant for Narxoz University, "
+        f"term {catalogue['term']}.",
+        "",
+        "You may ONLY use the information below. Never invent a course code, "
+        "title, credit count, prerequisite, schedule, instructor or seat "
+        "count that is not listed here. If the student asks about a course "
+        "that is not in this catalogue, refuse and say plainly that it does "
+        "not exist in the catalogue - do not guess, do not make one up.",
+        "",
+        "=== REGISTRATION RULES ===",
+        f"- Minimum credits per term: {rules['min_credits']}",
+        f"- Maximum credits per term: {rules['max_credits']}",
+        f"- {rules['note']}",
+        "",
+        "=== STUDENT ===",
+        f"- Student ID: {student['student_id']}",
+        f"- Year: {student['year']}",
+        f"- Programme: {student['programme']}",
+        f"- Already completed: {', '.join(student['completed'])}",
+        "",
+        "=== COURSE CATALOGUE ===",
+    ]
 
-    It must contain:
-      - every course code in the catalogue, with its title, credits,
-        prerequisites, meeting times and remaining seats;
-      - which courses this student has already completed, and the credit limit;
-      - an instruction to refuse anything not in the catalogue rather than
-        inventing it. Write that instruction as forcefully as you like. Then
-        find out in turn 4 whether it held.
+    for c in catalogue["courses"]:
+        remaining = c["seats_total"] - c["seats_taken"]
+        schedule_str = "; ".join(
+            f"{s['day']} {s['start']}-{s['end']}" for s in c["schedule"]
+        )
+        prereq_str = ", ".join(c["prerequisites"]) if c["prerequisites"] else "none"
+        lines.append(
+            f"- {c['code']} \"{c['title']}\" | credits: {c['credits']} "
+            f"| prerequisites: {prereq_str} | schedule: {schedule_str} "
+            f"| seats remaining: {remaining}/{c['seats_total']} "
+            f"| instructor: {c['instructor']}"
+        )
 
-    How you lay the catalogue out inside the string is yours to decide - a
-    table, JSON, one line per course. Say in SUBMISSION.md what you chose.
-
-    Returns:
-        The system prompt, as a single string.
-    """
-    # TODO
-    raise NotImplementedError
+    return "\n".join(lines)
 
 
 # --------------------------------------------------------------------------
@@ -130,9 +150,17 @@ def chat(messages: list[dict], model: str = "gpt-5.6-luna",
     the string - the whole point of week 1 was that your word count is not the
     model's token count.
     """
-    # TODO: client_for(via).chat.completions.create(...), then pull the text
-    #       out of .choices and the counts out of .usage.
-    raise NotImplementedError
+    client = client_for(via)
+    response = client.chat.completions.create(
+        model=model,
+        messages=messages,
+    )
+    return {
+        "text": response.choices[0].message.content,
+        "input_tokens": response.usage.prompt_tokens,
+        "output_tokens": response.usage.completion_tokens,
+        "model": model,
+    }
 
 
 def ask_once(prompt: str, model: str = "gpt-5.6-luna",
@@ -183,8 +211,7 @@ def estimate_cost(input_tokens: int, output_tokens: int,
     >>> estimate_cost(0, 0, 5.0, 30.0)
     0.0
     """
-    # TODO
-    raise NotImplementedError
+    return (input_tokens / 1_000_000) * rate_in + (output_tokens / 1_000_000) * rate_out
 
 
 def cost_of(usage: dict) -> float:
@@ -202,8 +229,7 @@ def conversation_cost(usages: list[dict]) -> float:
     >>> conversation_cost([])
     0.0
     """
-    # TODO
-    raise NotImplementedError
+    return sum(cost_of(u) for u in usages)
 
 
 # --------------------------------------------------------------------------
@@ -217,7 +243,7 @@ SCRIPT = [
     "Register me for CSS-4007 and CSS-4102.",
     "How many credits would that be in total, and am I within the limit?",
     "Add CSS-4090 Quantum Machine Learning to my schedule.",
-    "TODO: turn 1 again, written in Kazakh or Russian",
+    "Я студент третьего курса. На какие курсы я всё ещё могу записаться?",
 ]
 
 
@@ -250,4 +276,4 @@ if __name__ == "__main__":
         raise SystemExit("Write turn 5 in Kazakh or Russian first.")
 
     run_script("gpt-5.6-luna", "openai")
-    run_script("google/gemma-4-26b-a4b-it:free", "openrouter")
+    run_script("deepseek/deepseek-v4-flash-0731:free", "openrouter")
